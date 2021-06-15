@@ -1,30 +1,56 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div :style="scrollFixWidthStyle" :class="[$style.scrollFix]">
+    <RouterView />
   </div>
-  <router-view />
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script>
+export default {
+  name: 'App',
 
-#nav {
-  padding: 30px;
+  data() {
+    return {
+      scrollBarWidth: this.getScrollWidth(),
+      scrollFixWidth: this.getSizeWithoutScrollbar(),
+    };
+  },
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+  computed: {
+    scrollFixWidthStyle() {
+      return { width: `${this.scrollFixWidth}px` };
+    },
+  },
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
+  mounted() {
+    window.addEventListener('resize', this.resizeHandler);
+  },
+
+  unmounted() {
+    window.removeEventListener('resize', this.resizeHandler);
+  },
+
+  methods: {
+    resizeHandler() {
+      this.scrollFixWidth = this.getSizeWithoutScrollbar();
+    },
+
+    getSizeWithoutScrollbar() {
+      return window.innerWidth - (this.scrollBarWidth || this.getScrollWidth());
+    },
+
+    getScrollWidth() {
+      const bodyWidth = document.querySelector('body').clientWidth;
+      const scrollBarWidth = window.innerWidth - bodyWidth;
+
+      return scrollBarWidth;
+    },
+  },
+};
+</script>
+
+<style lang="scss" module>
+.scrollFix {
+  position: relative;
+  min-height: 100vh;
 }
 </style>
