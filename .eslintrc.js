@@ -33,6 +33,7 @@ module.exports = {
     'vue/v-on-event-hyphenation': ['error', 'always'],
     'vue/v-on-function-call': ['error', 'never'],
     'vue/padding-line-between-blocks': ['error', 'always'],
+    'vue/singleline-html-element-content-newline': 0,
     'vue/max-attributes-per-line': [
       'error',
       {
@@ -44,6 +45,18 @@ module.exports = {
           max: 1,
           allowFirstLine: false,
         },
+      },
+    ],
+    'vue/html-self-closing': [
+      'error',
+      {
+        html: {
+          void: 'never',
+          normal: 'never',
+          component: 'always',
+        },
+        svg: 'always',
+        math: 'always',
       },
     ],
   },
