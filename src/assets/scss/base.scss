@@ -1,1 +1,18 @@
 @import './fonts/index';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // Removes background when pressed on touch devices
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  font-size: 16px;
+  background-color: $color-white-190;
+  font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
+}
