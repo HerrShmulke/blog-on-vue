@@ -1,15 +1,18 @@
 <template>
-  <header>
-    <nav> </nav>
-  </header>
+  <TheHeader />
   <div :class="[$style.main]">
     <RouterView />
   </div>
 </template>
 
 <script>
+// Components
+import TheHeader from '@/components/layout/TheHeader';
+
 export default {
   name: 'DefaultLayout',
+
+  components: { TheHeader },
 };
 </script>
 
