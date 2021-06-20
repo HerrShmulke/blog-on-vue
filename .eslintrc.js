@@ -38,7 +38,7 @@ module.exports = {
       'error',
       {
         singleline: {
-          max: 3,
+          max: 4,
           allowFirstLine: true,
         },
         multiline: {
@@ -51,7 +51,7 @@ module.exports = {
       'error',
       {
         html: {
-          void: 'never',
+          void: 'always',
           normal: 'never',
           component: 'always',
         },
