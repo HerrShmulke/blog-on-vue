@@ -4,6 +4,7 @@ module.exports = {
       scss: {
         prependData: `
         @import "~@/assets/scss/colors"; 
+        @import "~@/assets/scss/media"; 
         `,
       },
     },
